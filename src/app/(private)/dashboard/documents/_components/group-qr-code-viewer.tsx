@@ -21,3 +21,4 @@ export function GroupQRCodeViewer({ groupId, groupName }: GroupQRCodeViewerProps
 }
 
 
+
