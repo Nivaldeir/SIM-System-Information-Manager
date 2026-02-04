@@ -24,6 +24,7 @@ import Link from "next/link"
 import {
   LifeBuoy,
   FileText,
+  CalendarDays,
   Building2,
   Store,
   Landmark,
@@ -50,6 +51,11 @@ const data = {
       title: "Documentos",
       url: "/dashboard/documents",
       icon: FileText,
+    },
+    {
+      title: "Calendário de vencimentos",
+      url: "/dashboard/documents/calendar",
+      icon: CalendarDays,
     },
     {
       title: "Empresas",
