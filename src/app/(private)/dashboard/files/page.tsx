@@ -92,7 +92,7 @@ export default function FilesPage() {
         <CardContent>
           {files && files.length > 0 ? (
             <div className="space-y-2">
-              {files.map((file) => (
+              {files.map((file: any) => (
                 <div
                   key={file.id}
                   className="flex items-center justify-between p-3 rounded-lg border hover:bg-muted/50 transition-colors"

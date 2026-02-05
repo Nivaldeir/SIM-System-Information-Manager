@@ -172,7 +172,7 @@ export function EstablishmentModal({
                       <SelectValue placeholder="Selecione a empresa" />
                     </SelectTrigger>
                     <SelectContent>
-                      {companies.map((company) => (
+                      {companies.map((company: any) => (
                         <SelectItem key={company.id} value={company.id}>
                           {company.name}
                         </SelectItem>

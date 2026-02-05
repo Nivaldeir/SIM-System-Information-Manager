@@ -15,7 +15,7 @@ export function useDocumentsPage() {
 
   const documents = documentsData?.documents || [];
 
-  const mappedDocuments = documents.map((doc) => ({
+  const mappedDocuments = documents.map((doc: any) => ({
     id: doc.id,
     name: doc.template?.name || "Documento",
     templateName: doc.template?.name || "",

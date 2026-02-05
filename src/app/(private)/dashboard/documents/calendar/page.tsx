@@ -55,7 +55,7 @@ export default function DocumentsCalendarPage() {
   const documentsByDate = useMemo(() => {
     const map: Record<string, any[]> = {};
 
-    (documents || []).forEach((doc) => {
+    (documents || []).forEach((doc: any) => {
       if (!doc.expirationDate) return;
       const d = new Date(doc.expirationDate as string | Date);
       const key = d.toISOString().slice(0, 10); // yyyy-mm-dd
@@ -99,7 +99,7 @@ export default function DocumentsCalendarPage() {
 
       let status: CalendarCellStatus | null = null;
       if (docs.length > 0) {
-        docs.forEach((doc) => {
+        docs.forEach((doc: any) => {
           const expStatus = getExpirationStatus(
             doc.expirationDate as Date | string | null,
             doc.alertDate as Date | string | null
@@ -245,7 +245,7 @@ export default function DocumentsCalendarPage() {
             <div className="grid grid-rows-6 gap-1">
               {calendarWeeks.map((week, wIndex) => (
                 <div key={wIndex} className="grid grid-cols-7 gap-1">
-                  {week.map((day) => {
+                  {week.map((day: any) => {
                     const isSelected = selectedDateKey === day.key;
                     const hasDocs = day.docs.length > 0;
                     const statusClasses = getStatusClasses(day.status);
@@ -258,8 +258,8 @@ export default function DocumentsCalendarPage() {
                         onClick={() =>
                           hasDocs
                             ? setSelectedDateKey(
-                                selectedDateKey === day.key ? null : day.key
-                              )
+                              selectedDateKey === day.key ? null : day.key
+                            )
                             : undefined
                         }
                         className={[
@@ -314,8 +314,8 @@ export default function DocumentsCalendarPage() {
             <CardTitle className="text-base">
               {selectedDateKey
                 ? `Documentos em ${new Date(
-                    selectedDateKey
-                  ).toLocaleDateString("pt-BR")}`
+                  selectedDateKey
+                ).toLocaleDateString("pt-BR")}`
                 : "Selecione um dia com documentos"}
             </CardTitle>
           </CardHeader>
@@ -335,7 +335,7 @@ export default function DocumentsCalendarPage() {
 
             {selectedDocs.length > 0 && (
               <div className="space-y-2">
-                {selectedDocs.map((doc) => {
+                {selectedDocs.map((doc: any) => {
                   const status = getExpirationStatus(
                     doc.expirationDate as Date | string | null,
                     doc.alertDate as Date | string | null

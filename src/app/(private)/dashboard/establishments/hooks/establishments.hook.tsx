@@ -17,7 +17,7 @@ export function useEstablishmentsPage() {
   const establishments = data?.establishments || [];
 
   // Mapear dados para formato da tabela
-  const tableData = establishments.map((est) => ({
+  const tableData = establishments.map((est: any) => ({
     id: est.id,
     name: est.name,
     code: est.code || "",
@@ -55,7 +55,7 @@ export function useEstablishmentsPage() {
   };
 
   const handleEditEstablishment = (establishment: typeof tableData[0]) => {
-    const originalEst = establishments.find((e) => e.id === establishment.id);
+    const originalEst = establishments.find((e: any) => e.id === establishment.id);
     if (!originalEst) return;
 
     openModal(

@@ -17,7 +17,7 @@ export function useSocialReasonsPage() {
   const socialReasons = data?.socialReasons || [];
 
   // Mapear para formato da tabela
-  const tableData = socialReasons.map((sr) => ({
+  const tableData = socialReasons.map((sr: any) => ({
     id: sr.id,
     name: sr.name,
     shortName: sr.shortName,
@@ -52,7 +52,7 @@ export function useSocialReasonsPage() {
   };
 
   const handleEditReason = (reason: typeof tableData[0]) => {
-    const originalSr = socialReasons.find((s) => s.id === reason.id);
+    const originalSr = socialReasons.find((s: any) => s.id === reason.id);
     if (!originalSr) return;
 
     openModal(

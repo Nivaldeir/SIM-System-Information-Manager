@@ -299,7 +299,7 @@ export function AccessModal({ onClose, data }: ModalProps<AccessModalData>) {
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                {companies.map((comp) => (
+                                {companies.map((comp: any) => (
                                   <SelectItem key={comp.id} value={comp.id}>
                                     {comp.name}
                                   </SelectItem>

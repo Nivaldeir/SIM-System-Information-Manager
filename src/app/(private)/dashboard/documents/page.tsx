@@ -25,7 +25,7 @@ export default function DocumentsPage() {
   const exportDocuments = useMemo(() => {
     if (!documents || documents.length === 0) return [];
 
-    return documents.map((doc) => ({
+    return documents.map((doc: any) => ({
       id: doc.id,
       templateName: doc.templateName || "Documento",
       organizationName: doc.orgaoName || "",

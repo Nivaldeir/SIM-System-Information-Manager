@@ -79,7 +79,7 @@ function EstablishmentsPageContent() {
         </Card>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {establishments.map((establishment) => (
+          {establishments.map((establishment: any) => (
             <Card
               key={establishment.id}
               className="cursor-pointer hover:shadow-md transition-shadow"

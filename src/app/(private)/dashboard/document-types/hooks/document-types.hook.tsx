@@ -6,6 +6,7 @@ import { api } from "@/src/shared/context/trpc-context";
 import { useMemo, useCallback } from "react";
 import { useDataTable } from "@/src/shared/hook/use-data-table";
 import { createColumns } from "../_components/columns";
+import { ColumnDef } from "@tanstack/react-table";
 
 export function useDocumentTypesPage() {
   const { openModal } = useModal();
@@ -22,7 +23,7 @@ export function useDocumentTypesPage() {
 
   // Mapear para formato da tabela
   const tableData = useMemo(() => {
-    return templates.map((template) => ({
+    return templates.map((template: any) => ({
       id: template.id,
       name: template.name,
       description: template.description || "-",
@@ -49,7 +50,7 @@ export function useDocumentTypesPage() {
   }, [openModal, refetch]);
 
   const handleEditTemplate = useCallback((templateId: string) => {
-    const template = templates.find((t) => t.id === templateId);
+    const template = templates.find((t: any) => t.id === templateId);
     if (!template) return;
 
     openModal(
@@ -92,7 +93,7 @@ export function useDocumentTypesPage() {
 
   const { table } = useDataTable({
     data: tableData,
-    columns,
+    columns: columns as ColumnDef<{ id: any; name: any; description: any; fieldsCount: any; isDefault: any; documentsCount: any; createdAt: any; }, any>[],
     pageCount: Math.ceil(tableData.length / 10),
     initialState: {
       pagination: {

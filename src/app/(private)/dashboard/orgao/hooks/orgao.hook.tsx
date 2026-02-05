@@ -17,7 +17,7 @@ export function useOrgaoPage() {
   const organizations = data?.organizations || [];
 
   // Mapear para formato da tabela
-  const tableData = organizations.map((org) => ({
+  const tableData = organizations.map((org: any) => ({
     id: org.id,
     name: org.name,
     shortName: org.shortName,
@@ -56,7 +56,7 @@ export function useOrgaoPage() {
   };
 
   const handleEditOrgao = (orgao: typeof tableData[0]) => {
-    const originalOrg = organizations.find((o) => o.id === orgao.id);
+    const originalOrg = organizations.find((o: any) => o.id === orgao.id);
     if (!originalOrg) return;
 
     openModal(

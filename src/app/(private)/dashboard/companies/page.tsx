@@ -42,7 +42,7 @@ export default function CompaniesPage() {
     );
   };
 
-  const handleEditCompany = (company: typeof companies[0]) => {
+  const handleEditCompany = (company: any) => {
     openModal(
       `edit-company-${company.id}`,
       CompanyModal,
@@ -137,7 +137,7 @@ export default function CompaniesPage() {
         </Card>
       ) : (
         <div className="grid gap-4">
-          {companies.map((company) => (
+          {companies.map((company: any) => (
             <Card
               key={company.id}
               className="cursor-pointer hover:shadow-md transition-shadow"

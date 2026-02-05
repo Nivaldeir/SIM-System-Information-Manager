@@ -47,7 +47,7 @@ function DocumentTypesPageContent() {
         </div>
       ) : (
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {templates.map((template) => (
+          {templates.map((template: any) => (
             <TemplateCard
               key={template.id}
               template={template as any}

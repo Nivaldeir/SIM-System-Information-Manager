@@ -96,7 +96,7 @@ function AccessesPageContent() {
         </CardHeader>
         <CardContent className="px-6 pt-4 space-y-2 pb-4">
           {roles && roles.length > 0 ? (
-            roles.map((role) => (
+            roles.map((role: any) => (
               <div key={role.id} className="flex items-start gap-2">
                 <div className="w-32 text-sm font-medium shrink-0">{role.name}:</div>
                 <div className="flex-1">
@@ -105,7 +105,7 @@ function AccessesPageContent() {
                   </p>
                   {role.permissions && role.permissions.length > 0 && (
                     <div className="flex flex-wrap gap-1 mt-1">
-                      {role.permissions.slice(0, 5).map((perm) => (
+                      {role.permissions.slice(0, 5).map((perm: any) => (
                         <Badge key={perm.id} variant="outline" className="text-[10px]">
                           {perm.action}:{perm.resource}
                         </Badge>

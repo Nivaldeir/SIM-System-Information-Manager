@@ -84,7 +84,7 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent className="mt-4 space-y-2 pb-4">
             {latestFiles && latestFiles.length > 0 ? (
-              latestFiles.map((file) => (
+              latestFiles.map((file: any) => (
                 <div
                   key={file.id}
                   className="flex items-center justify-between gap-4 rounded-lg bg-muted/40 px-3 py-2 hover:bg-muted/60"
@@ -125,7 +125,7 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent className="mt-4 space-y-2 pb-4">
             {establishments && establishments.length > 0 ? (
-              establishments.map((establishment) => (
+              establishments.map((establishment: any) => (
                 <div
                   key={establishment.code || establishment.name}
                   className="flex items-center justify-between gap-4 rounded-lg px-3 py-2 hover:bg-muted/40"

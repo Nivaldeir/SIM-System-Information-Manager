@@ -92,7 +92,7 @@ export function DocumentFormModal({
   const { openModal } = useModal();
 
   // Buscar template selecionado com seus campos
-  const selectedTemplate = templates.find((t) => t.id === selectedTemplateId);
+  const selectedTemplate = templates.find((t: any) => t.id === selectedTemplateId);
   const templateFields = selectedTemplate?.fields || [];
 
   const form = useZodForm(documentSchema, {
@@ -245,7 +245,7 @@ export function DocumentFormModal({
                             Nenhum template cadastrado
                           </div>
                         ) : (
-                          templates.map((type) => (
+                          templates.map((type: any) => (
                             <SelectItem key={type.id} value={type.id}>
                               {type.name}
                             </SelectItem>
@@ -276,7 +276,7 @@ export function DocumentFormModal({
                             Nenhum órgão cadastrado
                           </div>
                         ) : (
-                          organizations.map((orgao) => (
+                          organizations.map((orgao: any) => (
                             <SelectItem key={orgao.id} value={orgao.id}>
                               {orgao.shortName} - {orgao.name}
                             </SelectItem>
@@ -365,7 +365,7 @@ export function DocumentFormModal({
                             Nenhum usuário cadastrado
                           </div>
                         ) : (
-                          users.map((user) => (
+                          users.map((user: any) => (
                             <SelectItem key={user.id} value={user.id}>
                               {user.name || "Sem nome"} ({user.email})
                             </SelectItem>
@@ -394,7 +394,7 @@ export function DocumentFormModal({
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {users.map((user) => (
+                        {users.map((user: any) => (
                           <SelectItem key={user.id} value={user.id}>
                             {user.name || "Sem nome"} ({user.email})
                           </SelectItem>
@@ -426,7 +426,7 @@ export function DocumentFormModal({
                             Nenhuma empresa cadastrada
                           </div>
                         ) : (
-                          companies.map((company) => (
+                          companies.map((company: any) => (
                             <SelectItem key={company.id} value={company.id}>
                               {company.name}
                             </SelectItem>
@@ -457,7 +457,7 @@ export function DocumentFormModal({
                             Nenhum estabelecimento cadastrado
                           </div>
                         ) : (
-                          establishments.map((est) => (
+                          establishments.map((est: any) => (
                             <SelectItem key={est.id} value={est.id}>
                               {est.name}
                             </SelectItem>
@@ -545,7 +545,7 @@ export function DocumentFormModal({
                             </>
                           ) : (
                             <>
-                              {groups.map((group) => (
+                              {groups.map((group: any) => (
                                 <SelectItem key={group.id} value={group.id}>
                                   {group.name}
                                 </SelectItem>
@@ -601,7 +601,7 @@ export function DocumentFormModal({
                   </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {templateFields.map((field) => {
+                  {templateFields.map((field: any) => {
                     const fieldValue = customFieldsData[field.name] || "";
 
                     const handleChange = (value: string) => {
@@ -635,7 +635,7 @@ export function DocumentFormModal({
                               <SelectValue placeholder={`Selecione ${field.label.toLowerCase()}`} />
                             </SelectTrigger>
                             <SelectContent>
-                              {field.options?.map((option) => (
+                              {field.options?.map((option: any) => (
                                 <SelectItem key={option} value={option}>
                                   {option}
                                 </SelectItem>
@@ -693,7 +693,7 @@ export function DocumentFormModal({
 
                 {attachments.length > 0 && (
                   <div className="border rounded-md p-2 space-y-2">
-                    {attachments.map((file, index) => (
+                    {attachments.map((file: any, index: number) => (
                       <div
                         key={index}
                         className="flex items-center justify-between p-2 bg-muted rounded"

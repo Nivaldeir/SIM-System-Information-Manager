@@ -7,6 +7,7 @@ import { useModal } from "@/src/shared/context/modal-context";
 import { AccessModal } from "../_components/access-modal";
 import { AccessFormModal } from "../_components/access-form";
 import { api } from "@/src/shared/context/trpc-context";
+import { ColumnDef } from "@tanstack/react-table";
 
 export function useAccessesPage() {
   const { openModal } = useModal();
@@ -24,7 +25,7 @@ export function useAccessesPage() {
   const tableData = useMemo(() => {
     if (!users) return [];
     
-    return users.map((user) => ({
+    return users.map((user: any) => ({
       id: user.id,
       name: user.name || "Sem nome",
       email: user.email || "",
@@ -50,7 +51,7 @@ export function useAccessesPage() {
   }, [openModal, roles, refetch]);
 
   const handleEditAccess = useCallback((userId: string) => {
-    const user = users?.find((u) => u.id === userId);
+    const user = users?.find((u: any) => u.id === userId);
     if (!user) return;
 
     openModal(
@@ -76,10 +77,10 @@ export function useAccessesPage() {
   }, [openModal, users, roles, refetch]);
 
   const handleDeleteAccess = useCallback((userId: string) => {
-    const user = users?.find((u) => u.id === userId);
+    const user = users?.find((u: any) => u.id === userId);
     if (user && user.roles.length > 0) {
       // Remove todas as roles do usuário
-      user.roles.forEach((role) => {
+      user.roles.forEach((role: any) => {
         removeRoleMutation.mutate({
           userId,
           roleId: role.id,
@@ -92,7 +93,7 @@ export function useAccessesPage() {
 
   const { table } = useDataTable({
     data: tableData,
-    columns,
+    columns: columns as ColumnDef<{ id: any; name: any; email: any; roles: any; companies: any; }, any>[],
     pageCount: 1,
     initialState: {
       pagination: {
