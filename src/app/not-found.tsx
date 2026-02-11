@@ -27,7 +27,7 @@ export default function NotFound() {
 
         <div className="flex justify-center">
           <Button asChild variant="default" className="w-full sm:w-auto">
-            <Link href="/dashboard">
+            <Link href="/dashboard" className='flex gap-2 items-center'>
               <Home className="w-4 h-4 mr-2" />
               Ir para Dashboard
             </Link>

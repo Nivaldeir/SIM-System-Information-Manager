@@ -5,6 +5,7 @@ import {
   CalendarDays,
   ChevronLeft,
   ChevronRight,
+  Eye,
   Loader2,
 } from "lucide-react";
 
@@ -18,6 +19,7 @@ import {
 } from "@/src/shared/components/global/ui";
 import { api } from "@/src/shared/context/trpc-context";
 import { getExpirationStatus } from "@/src/shared/utils/document-expiration";
+import Link from "next/link";
 
 type CalendarCellStatus = "safe" | "warning" | "danger" | "expired";
 
@@ -139,6 +141,8 @@ export default function DocumentsCalendarPage() {
     selectedDateKey && documentsByDate[selectedDateKey]
       ? documentsByDate[selectedDateKey]
       : [];
+
+  console.log(selectedDocs)
 
   const handlePrevMonth = () => {
     setCurrentMonth((prev) => {
@@ -344,25 +348,53 @@ export default function DocumentsCalendarPage() {
                   return (
                     <div
                       key={doc.id}
-                      className={`rounded-md border px-3 py-2 text-xs flex flex-col gap-1 ${status.bgColor} ${status.borderColor}`}
+                      className={`rounded-lg border p-3 text-xs flex flex-col gap-2 shadow-sm transition hover:shadow-md ${status.bgColor} ${status.borderColor}`}
                     >
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="font-medium">
-                          {doc.template?.name || "Documento"}
-                        </span>
-                        <Badge variant="outline" className="text-[10px]">
-                          {status.text}
-                        </Badge>
+                      {/* Header */}
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex flex-col">
+                          <span className="font-semibold text-sm leading-tight">
+                            {doc.template?.name || "Documento"}
+                          </span>
+
+                          <Badge
+                            variant="outline"
+                            className="mt-1 w-fit text-[10px]"
+                          >
+                            {status.text}
+                          </Badge>
+                        </div>
+
+                        <Link
+                          href={`/document/${doc.id}`}
+                          target="_blank"
+                          className="h-7 w-7 shrink-0 cursor-pointer"
+                        >
+                          <Eye size={14} />
+                        </Link>
                       </div>
-                      <div className="flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
+
+                      {/* Content */}
+                      <div className="flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-muted-foreground">
                         {doc.company?.name && (
-                          <span>Empresa: {doc.company.name}</span>
+                          <span>
+                            <strong className="font-medium text-foreground">Empresa:</strong>{" "}
+                            {doc.company.name}
+                          </span>
                         )}
+
                         {doc.establishment?.name && (
-                          <span>Estabelecimento: {doc.establishment.name}</span>
+                          <span>
+                            <strong className="font-medium text-foreground">Estabelecimento:</strong>{" "}
+                            {doc.establishment.name}
+                          </span>
                         )}
+
                         {doc.responsible?.name && (
-                          <span>Responsável: {doc.responsible.name}</span>
+                          <span>
+                            <strong className="font-medium text-foreground">Responsável:</strong>{" "}
+                            {doc.responsible.name}
+                          </span>
                         )}
                       </div>
                     </div>
